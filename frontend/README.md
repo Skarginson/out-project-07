@@ -2,15 +2,32 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
 
+## Before anything else : 
+To install the project, run ;
+
+```bash
+npm install
+```
+
 ## Development server
 
 To start a local development server, run:
 
 ```bash
-ng serve
+npm run dev
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+
+## Environments 
+
+Two environments are available : 
+- environment
+- environment.development
+
+
+<!--- THE REST OF THE README WILL HAVE TO BE MODIFIED, TO KEEP IN MIND --->
 
 ## Code scaffolding
 
