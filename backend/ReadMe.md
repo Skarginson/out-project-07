@@ -3,7 +3,7 @@
 Ce projet constitue la partie backend de l’application, développé avec **Spring Boot** et utilisant une **base de données H2 en mémoire** pour le développement et les tests.
 
 ---
-## 🚀 Prérequis
+## Prérequis
 
 Avant de lancer le projet, assure-toi d’avoir installé :
 
@@ -18,7 +18,7 @@ java -version
 mvn -version
 ```
 
-## 🚀 Démarrer le serveur de développement
+## Démarrer le serveur de développement
 
 - Pour lancer l’application localement, exécute :
 
@@ -44,18 +44,18 @@ Paramètres de connexion par défaut :
 
     - Password : (vide)
 
-##  🧪 Tests & Couverture – JaCoCo
-- ▶️ Lancer les tests
+##  Tests & Couverture – JaCoCo
+- Lancer les tests
     ```bash
         mvn test
     ```
-- 📊 Générer le rapport JaCoCo
+-  Générer le rapport JaCoCo
 
   Le rapport HTML est généré automatiquement après les tests :
   target/site/jacoco/index.html
 
 
-## 📚 Ressources utiles
+## Ressources utiles
 - Spring Boot : https://spring.io/projects/spring-boot
 
 - JPA / Hibernate : https://spring.io/guides/gs/accessing-data-jpa
