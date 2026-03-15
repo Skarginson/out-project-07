@@ -4,6 +4,7 @@ import com.example.backend.dataHandler.dto.StudentCreateDto;
 import com.example.backend.dataHandler.dto.StudentResponseDto;
 import com.example.backend.dataHandler.dto.StudentUpdateDto;
 import com.example.backend.dataHandler.entity.Student;
+import com.example.backend.dataHandler.mapper.StudentMapper;
 import com.example.backend.service.StudentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 public class StudentController {
 
     private final StudentService studentService;
+    private final StudentMapper studentMapper;
     private final Logger log = LoggerFactory.getLogger(StudentController.class);
 
     @PostMapping
@@ -31,27 +33,27 @@ public class StudentController {
             UriComponentsBuilder uriBuilder) {
 
         log.info("Creating student {} {}", dto.firstName(), dto.lastName());
-        Student created = studentService.save(dto);
-        StudentResponseDto response = StudentControllerMapper.toResponseDto(created);
+        Student response = studentService.save(dto);
+        StudentResponseDto responseDto = studentMapper.toResponseDto(response);
 
         URI location = uriBuilder.path("/api/students/{id}")
-                .buildAndExpand(created.getId())
+                .buildAndExpand(responseDto.id())
                 .toUri();
 
-        return ResponseEntity.created(location).body(response);
+        return ResponseEntity.created(location).body(responseDto);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<StudentResponseDto> getById(@PathVariable Long id) {
-        Student student = studentService.findById(id);
-        return ResponseEntity.ok(StudentControllerMapper.toResponseDto(student));
+        Student response = studentService.findById(id);
+        return ResponseEntity.ok(studentMapper.toResponseDto(response));
     }
 
     @GetMapping
     public ResponseEntity<List<StudentResponseDto>> getAll() {
         List<StudentResponseDto> list = studentService.findAll()
                 .stream()
-                .map(StudentControllerMapper::toResponseDto)
+                .map(studentMapper::toResponseDto)
                 .collect(Collectors.toList());
         return ResponseEntity.ok(list);
     }
@@ -62,7 +64,7 @@ public class StudentController {
             @Valid @RequestBody StudentUpdateDto dto) {
 
         Student updated = studentService.update(id, dto);
-        return ResponseEntity.ok(StudentControllerMapper.toResponseDto(updated));
+        return ResponseEntity.ok(studentMapper.toResponseDto(updated));
     }
 
     @DeleteMapping("/{id}")
