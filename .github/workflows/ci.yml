@@ -53,7 +53,7 @@ jobs:
         run: npm ci
 
       - name: Lancement des tests
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+        run: npm run test -- --watch=false --browsers=chromiumheadless
 
       - name: Build de production
         run: npm run build
