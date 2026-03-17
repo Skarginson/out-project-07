@@ -1,0 +1,55 @@
+<article class="student-card">
+  <!-- Header coloré selon le type -->
+  <div class="card-header" [style.background-color]="typeColor()">
+    <span class="type-badge">{{ student().type }}</span>
+
+    @if (student().imageUrl) {
+      <img
+        [src]="student().imageUrl"
+        [alt]="student().firstName + ' ' + student().lastName"
+        class="avatar"
+      />
+    } @else {
+      <div class="avatar avatar-placeholder">
+        <span>{{ student().firstName[0] }}{{ student().lastName[0] }}</span>
+      </div>
+    }
+  </div>
+
+  <!-- Corps de la carte -->
+  <div class="card-body">
+    <div class="student-info">
+      <h3 class="student-name">{{ student().firstName }} {{ student().lastName }}</h3>
+      @if (student().nickname) {
+        <p class="student-nickname">"{{ student().nickname }}"</p>
+      }
+    </div>
+
+    <!-- Barres de stats -->
+    <div class="stats">
+      <div class="stat-row">
+        <span class="stat-label hp">HP</span>
+        <div class="stat-bar-track">
+          <div class="stat-bar-fill hp" [style.width.%]="statPercent(student().stats?.hp)"></div>
+        </div>
+        <span class="stat-value">{{ student().stats?.hp ?? 0 }}</span>
+      </div>
+
+      <div class="stat-row">
+        <span class="stat-label atk">ATK</span>
+        <div class="stat-bar-track">
+          <div class="stat-bar-fill atk" [style.width.%]="statPercent(student().stats?.attack)"></div>
+        </div>
+        <span class="stat-value">{{ student().stats?.attack ?? 0 }}</span>
+      </div>
+
+      <div class="stat-row">
+        <span class="stat-label def">DEF</span>
+        <div class="stat-bar-track">
+          <div class="stat-bar-fill def" [style.width.%]="statPercent(student().stats?.defense)"></div>
+        </div>
+        <span class="stat-value">{{ student().stats?.defense ?? 0 }}</span>
+      </div>
+    </div>
+  </div>
+</article>
