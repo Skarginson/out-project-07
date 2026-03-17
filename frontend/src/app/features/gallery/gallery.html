@@ -1,0 +1,37 @@
+<main class="gallery-page">
+  <h1 class="gallery-title">PROMODEX - ATTRAPEZ LES TOUS</h1>
+
+  @if (loading()) {
+    <!-- Skeleton loader -->
+    <div class="student-grid">
+      @for (item of skeletons; track $index) {
+        <div class="skeleton-card">
+          <div class="skeleton-header"></div>
+          <div class="skeleton-body">
+            <div class="skeleton-line w-3/4"></div>
+            <div class="skeleton-line w-1/2"></div>
+            <div class="skeleton-stats">
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else if (error()) {
+    <div class="error-state">
+      <p>{{ error() }}</p>
+    </div>
+  } @else if (students().length === 0) {
+    <div class="empty-state">
+      <p>Aucun étudiant trouvé.</p>
+    </div>
+  } @else {
+    <div class="student-grid">
+      @for (student of students(); track student.id) {
+        <app-student-card [student]="student" />
+      }
+    </div>
+  }
+</main>
