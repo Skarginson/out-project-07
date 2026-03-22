@@ -1,4 +1,4 @@
-package com.example.backend;
+package com.example.backend.service;
 
 import com.example.backend.dataHandler.dto.StudentCreateDto;
 import com.example.backend.dataHandler.dto.StudentUpdateDto;
@@ -6,7 +6,6 @@ import com.example.backend.dataHandler.entity.Student;
 import com.example.backend.dataHandler.mapper.StudentMapper;
 import com.example.backend.exception.ResourceNotFoundException;
 import com.example.backend.repository.StudentRepository;
-import com.example.backend.service.StudentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class StudentServiceTests {
+class StudentServiceTest {
 
     @Mock
     private StudentRepository studentRepository;

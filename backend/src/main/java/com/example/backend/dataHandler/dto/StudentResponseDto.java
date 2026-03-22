@@ -1,13 +1,16 @@
 package com.example.backend.dataHandler.dto;
 
+import com.example.backend.utils.HumorType;
+import com.example.backend.utils.StudentType;
+
 public record StudentResponseDto(
         Long id,
         String firstName,
         String lastName,
         String nickname,
         String speciality,
-        com.example.backend.utils.StudentType type,
-        com.example.backend.utils.HumorType humorType,
+        StudentType type,
+        HumorType humorType,
         StatsDto stats,
         String superPower,
         String catchPhrase,
