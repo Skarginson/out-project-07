@@ -1,1 +1,11 @@
-<h1>Modifier étudiant</h1>
+<div class="page-container">
+  <h1>Modifier étudiant</h1>
+
+  @if (loading()) {
+    <p>Chargement...</p>
+  } @else if (error()) {
+    <p class="error">{{ error() }}</p>
+  } @else {
+    <app-student-form [student]="student()" (submitted)="onSubmit($event)" (cancelled)="onCancel()" />
+  }
+</div>

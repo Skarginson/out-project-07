@@ -1,1 +1,4 @@
-<h1>Nouvel étudiant</h1>
+<div class="page-container">
+  <h1>Nouvel étudiant</h1>
+  <app-student-form (submitted)="onSubmit($event)" (cancelled)="onCancel()" />
+</div>
