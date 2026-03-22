@@ -27,6 +27,8 @@
     <div class="empty-state">
       <p>Aucun étudiant trouvé.</p>
     </div>
+  <!-- @Empty plutôt que le else if de la fin  -->
+
   } @else {
     <div class="student-grid">
       @for (student of students(); track student.id) {
