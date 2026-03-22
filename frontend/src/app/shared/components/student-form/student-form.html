@@ -1,0 +1,101 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="student-form">
+  <div class="form-section">
+    <h2 class="section-title">Informations générales</h2>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstName">Prénom <span class="required">*</span></label>
+        <input id="firstName" type="text" formControlName="firstName" placeholder="Prénom" />
+        @if (form.get('firstName')?.invalid && form.get('firstName')?.touched) {
+          <span class="error">Le prénom est requis</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Nom <span class="required">*</span></label>
+        <input id="lastName" type="text" formControlName="lastName" placeholder="Nom" />
+        @if (form.get('lastName')?.invalid && form.get('lastName')?.touched) {
+          <span class="error">Le nom est requis</span>
+        }
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="nickname">Surnom</label>
+        <input id="nickname" type="text" formControlName="nickname" placeholder="Surnom" />
+      </div>
+
+      <div class="form-group">
+        <label for="speciality">Spécialité</label>
+        <input id="speciality" type="text" formControlName="speciality" placeholder="Spécialité" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="type">Type <span class="required">*</span></label>
+        <select id="type" formControlName="type">
+          @for (t of studentTypes; track t) {
+            <option [value]="t">{{ t }}</option>
+          }
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="humorType">Humeur</label>
+        <select id="humorType" formControlName="humorType">
+          <option value="">-- Aucune --</option>
+          @for (h of humorTypes; track h) {
+            <option [value]="h">{{ h }}</option>
+          }
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2 class="section-title">Stats</h2>
+
+    <div formGroupName="stats">
+      <div class="stat-group">
+        <label for="hp">HP : {{ form.get('stats.hp')?.value }}</label>
+        <input id="hp" type="range" min="0" max="100" formControlName="hp" />
+      </div>
+
+      <div class="stat-group">
+        <label for="attack">Attaque : {{ form.get('stats.attack')?.value }}</label>
+        <input id="attack" type="range" min="0" max="100" formControlName="attack" />
+      </div>
+
+      <div class="stat-group">
+        <label for="defense">Défense : {{ form.get('stats.defense')?.value }}</label>
+        <input id="defense" type="range" min="0" max="100" formControlName="defense" />
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2 class="section-title">Personnalité</h2>
+
+    <div class="form-group">
+      <label for="superPower">Super pouvoir</label>
+      <input id="superPower" type="text" formControlName="superPower" placeholder="Super pouvoir" />
+    </div>
+
+    <div class="form-group">
+      <label for="catchPhrase">Phrase culte</label>
+      <input id="catchPhrase" type="text" formControlName="catchPhrase" placeholder="Phrase culte" />
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">URL de l'image</label>
+      <input id="imageUrl" type="url" formControlName="imageUrl" placeholder="https://..." />
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" class="btn-cancel" (click)="onCancel()">Annuler</button>
+    <button type="submit" class="btn-submit" [disabled]="form.invalid">Enregistrer</button>
+  </div>
+</form>
