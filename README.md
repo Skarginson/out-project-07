@@ -1,4 +1,4 @@
-Ceci est le projet qui servira de CC2 pour le cours d'OUT 2026/2026.
+Ceci est le projet qui servira de CC2 pour le cours d'OUT 2025/2026.
 
 ## Promodex — Le Pokédex de la promo
 
@@ -9,7 +9,7 @@ Promodex transforme chaque élève de la promo en **carte à collectionner faço
 Chaque élève est une fiche avec :
 
 - Une identité : nom, prénom, surnom
-- Une filière (FAT / FISE) et une spécialité
+- Une filière (FISA / FAT / FISE) et une spécialité
 - Un type humoristique : Café Addict, Noctambule, Fantôme.
 - Des stats : PV, attaque, défense
 - Un super pouvoir et une catchphrase
