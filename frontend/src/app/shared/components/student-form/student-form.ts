@@ -43,7 +43,15 @@ export class StudentForm implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid) {
-      this.submitted.emit(this.form.value);
+      const raw = this.form.value;
+      const student: Partial<Student> = {
+        ...raw,
+        humorType: raw.humorType || undefined,
+        stats: raw.stats
+          ? { hp: Number(raw.stats.hp), attack: Number(raw.stats.attack), defense: Number(raw.stats.defense) }
+          : undefined,
+      };
+      this.submitted.emit(student);
     }
   }
 

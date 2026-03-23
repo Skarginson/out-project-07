@@ -80,6 +80,13 @@
   50%       { opacity: 0.5; }
 }
 
+/* Lien de carte */
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 /* États vides/erreur */
 .error-state,
 .empty-state {
