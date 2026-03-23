@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from '../../core/models/student.model';
 import { StudentService } from '../../core/services/student.service';
@@ -14,10 +14,13 @@ export class StudentNew {
   private studentService = inject(StudentService);
   private router = inject(Router);
 
+  protected error = signal<string | null>(null);
+
   onSubmit(student: Partial<Student>): void {
+    this.error.set(null);
     this.studentService.create(student as Student).subscribe({
       next: (created) => this.router.navigate(['/student', created.id]),
-      error: (err: Error) => console.error(err.message),
+      error: (err: Error) => this.error.set(err.message),
     });
   }
 

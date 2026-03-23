@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Student } from '../../core/models/student.model';
 import { StudentService } from '../../core/services/student.service';
 import { StudentCard } from '../../shared/components/student-card/student-card';
@@ -6,7 +7,7 @@ import { StudentCard } from '../../shared/components/student-card/student-card';
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [StudentCard],
+  imports: [StudentCard, RouterLink],
   templateUrl: './gallery.html',
   styleUrl: './gallery.css',
 })

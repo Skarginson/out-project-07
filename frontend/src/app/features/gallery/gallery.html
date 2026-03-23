@@ -32,7 +32,9 @@
   } @else {
     <div class="student-grid">
       @for (student of students(); track student.id) {
-        <app-student-card [student]="student" />
+        <a [routerLink]="['/student', student.id]" class="card-link">
+          <app-student-card [student]="student" />
+        </a>
       }
     </div>
   }

@@ -35,9 +35,10 @@ export class StudentEdit {
 
   onSubmit(student: Partial<Student>): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.error.set(null);
     this.studentService.update(id, student as Student).subscribe({
       next: () => this.router.navigate(['/student', id]),
-      error: (err: Error) => console.error(err.message),
+      error: (err: Error) => this.error.set(err.message),
     });
   }
 

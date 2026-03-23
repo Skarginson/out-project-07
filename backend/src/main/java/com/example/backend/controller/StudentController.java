@@ -32,7 +32,7 @@ public class StudentController {
             @Valid @RequestBody StudentCreateDto dto,
             UriComponentsBuilder uriBuilder) {
 
-        log.info("Creating student {} {}", dto.firstName(), dto.lastName());
+        log.info("Creating student {} {}", dto.getFirstName(), dto.getLastName());
         Student response = studentService.save(dto);
         StudentResponseDto responseDto = studentMapper.toResponseDto(response);
 
